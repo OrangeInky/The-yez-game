@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> The yez game</title>
+</head>
+<body style="background-color: lightyellow;" onload="load()">
+
+    <div style="text-align: center;">
+    <button onclick="addyez()" style="font-size: 30px; margin: auto; background-color: lightgrey; width: auto; text-align: center;" > Gain yez</button>
+    </div>
+    <div style="text-align: center; font-size: 50px;">
+        <span id="yezc" style="margin: initial; color: lightblue;"> current amount of yez : </span> <div id="yesamount"> </div>
+        </div>
+    <div class="yezup" style="text-align: center;">
+        <button onclick="upgradeyez()"> Upgrade your yez per click!</button> <br> <span id="upgradec"> COST: 30</span> <br> <span id="upgradee"> EFFECT: 1x</span>
+    </div>
+
+    <div id="prestige" style="display: none; margin: 50px; padding: 20px; border: 3px;">
+        You can now destory all your yezs to summon the yes from the outer world! <br> <button onclick="prestige()" style="background-color: red;"> Summon yes</button> <br> 
+
+       <div style="border: 3px; margin: auto; padding: 0px; font-size: 20px; color: red;"> You will gain : <span id="yesg"> 0</span> yes </div>
+        <div id="yesupgrades" style="display:none;  border: 15px solid red; padding: 50px; margin: 20px;"> 
+            <button onclick="yesupgrades1()" style="text-align: center; margin-left: 200px;"> Yes Upg 1</button>
+            <div style="text-align: center;">
+                Increasing the multiplier per yez per click upgrade by: <span id="u1e"> </span> <br>
+                COST: <span id="u1c"></span>
+            </div>
+            <button onclick="yesupgrades2()" style="text-align: center; margin-left: 200px;"> Yes Upg 2</button>
+            <div style="text-align: center;">
+                Dividing the cost per yez per click upgrade by: <span id="u2e"></span> <br>
+                COST: <span id="u2c"></span>
+            </div>
+            <button onclick="yesupgrades3()" style="text-align: center; margin-left: 200px;"> Yes Upg 3</button>
+            <div style="text-align: center;">
+                Increasing yes gain by: <span id="u3e"></span> <br>
+                COST: <span id="u3c"></span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="Game.js"></script>
+</html>
