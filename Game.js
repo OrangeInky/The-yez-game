@@ -28,12 +28,16 @@ function addyez () {
 function upgradeyez () {
     if (player.data.count > 2 ) {
         player.data.x = 2;
+    } else {
+        if (player.data.count > 5) {
+            player.data.x = 2.5;
+        }
     }
     if (player.data.yez >= player.data.upgradecost) {
         player.data.count += 1;
         player.data.yez -= player.data.upgradecost;
         player.data.upgradeeffect = 2 ** (player.data.count * player.data.u1e); 
-        player.data.upgradecost = format(((player.data.upgradecost * 3) ** player.data.x) / player.data.u2e);
+        player.data.upgradecost = ((player.data.upgradecost * 3) ** player.data.x) / player.data.u2e;
         document.getElementById("yezc").innerHTML = "current amount of yez : " + format(player.data.yez);
         document.getElementById("upgradec").innerHTML = "COST: " + format(player.data.upgradecost);
         document.getElementById("upgradee").innerHTML = "EFFECT: " + format(player.data.upgradeeffect) + "x"
@@ -41,7 +45,7 @@ function upgradeyez () {
 }
 
 function prestige() {
-    player.data.yesgain = format((Math.log2(player.data.yez)) * player.data.u3e)
+    player.data.yesgain = ((Math.log2(player.data.yez)) * player.data.u3e);
     player.data.yes += player.data.yesgain;
     player.data.yez = 0;
     player.data.yezgain = 1;
@@ -68,7 +72,7 @@ function yesupgrades2 () {
         player.data.yes -= player.data.u2c;
         player.data.u2 += 1;
         player.data.u2c *= 2;
-        player.data.u2e = 2 ** player.data.u2;
+        player.data.u2e = 1.27 ** player.data.u2;
     }
     
 }
@@ -109,6 +113,10 @@ function load() {
     document.getElementById("u2c").innerHTML = format(player.data.u2c)
     document.getElementById("u3e").innerHTML =  format(player.data.u3e)
     document.getElementById("u3c").innerHTML = format(player.data.u3c)
+    if (player.data.yes >= 1) {
+        document.getElementById("yesupgrades").style.display = ""
+        document.getElementById("prestige").style.display = ""
+    }
 }
 
 var loop = window.setInterval (function () {
@@ -119,19 +127,19 @@ var loop = window.setInterval (function () {
     player.data.yesgain = format((Math.log2(player.data.yez)) * player.data.u3e)
     if (player.data.yesgain >= 8) {
         document.getElementById("yesg").innerHTML = format(player.data.yesgain);
+        document.getElementById("pb1").style.display = ""
     } else {
         document.getElementById("yesg").innerHTML = 0;
     }
     if (player.data.yes >= 1) {
         document.getElementById("yesupgrades").style.display = ""
         document.getElementById("prestige").style.display = ""
-        document.getElementById("yesamount").style.display = ""
-        document.getElementById("yesamount").innerHTML = "yes amount: " + player.data.yes;
-        document.getElementById("u1e").innerHTML =  format(player.data.u1e)
-        document.getElementById("u1c").innerHTML = format(player.data.u1c)
-        document.getElementById("u2e").innerHTML =  format(player.data.u2e)
-        document.getElementById("u2c").innerHTML = format(player.data.u2c)
-        document.getElementById("u3e").innerHTML =  format(player.data.u3e)
-        document.getElementById("u3c").innerHTML = format(player.data.u3c)
     }
+    document.getElementById("yesamount").innerHTML = "yes amount: " + format(player.data.yes);
+    document.getElementById("u1e").innerHTML =  format(player.data.u1e)
+    document.getElementById("u1c").innerHTML = format(player.data.u1c)
+    document.getElementById("u2e").innerHTML =  format(player.data.u2e)
+    document.getElementById("u2c").innerHTML = format(player.data.u2c)
+    document.getElementById("u3e").innerHTML =  format(player.data.u3e)
+    document.getElementById("u3c").innerHTML = format(player.data.u3c)
 },10)
